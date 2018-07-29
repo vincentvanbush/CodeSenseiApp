@@ -28,6 +28,7 @@ class ArticlesController < ApplicationController
   def show
     #byebug
     @article = Article.find(params[:id])
+    @comment = @article.comments.new
   end
 
   def edit
