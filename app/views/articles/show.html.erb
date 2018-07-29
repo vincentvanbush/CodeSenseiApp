@@ -25,12 +25,8 @@
 
 <p>
   <strong> Comments </strong>
-  <% @article.comments.each do |comment|  %>
-  <div>
-    <strong> <%= comment.commenter %>
-    </strong>
-    <%= comment.body %>
-  </div>
+  <% @article.comments.reject(&:new_record?).each do |comment|  %>
+  <%= render 'comments/comment', comment: comment %>
   <% end %>
 
 </p>

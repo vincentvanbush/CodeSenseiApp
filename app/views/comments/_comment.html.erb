@@ -1,0 +1,9 @@
+<div>
+  <strong> <%= comment.commenter %>
+  </strong>
+  <%= comment.body %>
+  <%= link_to 'Delete', article_comment_path(@article.id, comment.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+
+<!-- metoda link to, ma 3 wartosci, pod ktorymi kryja sie tez metody -->
+
+</div>
