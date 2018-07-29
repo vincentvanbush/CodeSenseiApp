@@ -4,8 +4,9 @@ class ArticlesController < ApplicationController
   end
 
   #def create
+
     #byebug
-    #render 'articles/blabla'
+    # render 'articles/blabla'
     #render plain: params [:article].inspect
     # params - tu dostaniemy caly ladunek, ktory przeslalismy i tu jest tresc artykulu ktory chcemy utworzyc
     # .inspect - pokaze nam w formie debugowej
@@ -28,6 +29,7 @@ class ArticlesController < ApplicationController
   def show
     #byebug
     @article = Article.find(params[:id])
+    @comment = @article.comments.new
   end
 
   def edit
