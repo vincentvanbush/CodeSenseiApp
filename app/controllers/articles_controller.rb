@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
   
-  http_basic_authenticate_with name:"admin",password:"secret",except:[:index,:show]
-
+  #http_basic_authenticate_with name:"admin",password:"secret",except:[:index,:show]
+  before_action :check_user, except: [:index, :show]
 
   def new
     @article = Article.new
@@ -61,4 +61,10 @@ class ArticlesController < ApplicationController
   def article_params
     params.require(:article).permit(:title, :text, :article_type)
   end
+
+  def check_user
+    redirect_to new_user_session_path unless user_signed_in?
+  end  
+
+
 end
