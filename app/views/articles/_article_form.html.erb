@@ -13,8 +13,9 @@
     </div>
   <% end %>
 
-  <%= f.input :title %><br>
-  <%= f.input :text %><br>
+  <%= f.input :title %>
+  <%= f.input :text %>
+  <%= f.input :article_type, collection: Article.article_types.keys, include_blank: false, as: :radio_buttons %>
   <%= f.submit %>
   
 <% end %>
