@@ -12,9 +12,11 @@
     </div>
   <% end %>
 
-  <%= f.input :title %>
+  <%= f.input :title, label: 'Article Title', error: 'Please provide a title' %>
 
-  <%= f.input :text %>
+  <%= f.input :text, placeholder: 'This is your article content...', label: false %>
+
+  <%= f.input :article_type, collection: Article.article_types.keys, include_blank: false, as: :radio_buttons %>
 
   <%= f.submit %>
 <% end %>
