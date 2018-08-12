@@ -7,6 +7,11 @@
   <strong>Text:</strong>
   <%= @article.text %>
 </p>
+<p>
+  <strong>Author</strong>
+  <%= @article.user %>
+  <%= @article.user&.email %>
+</p>
 
 <h2>Add a comment</h2>
 <% if @comment.errors.any? %>
