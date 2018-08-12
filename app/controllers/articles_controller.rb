@@ -21,6 +21,7 @@ before_action :check_user, except: [:index, :show]
 
   def create
     @article = Article.new(article_params)
+    @article.user = current.user
     if @article.save
       flash[:notice] = "Article'#{@article.title}' was created succesfully."
       redirect_to @article
