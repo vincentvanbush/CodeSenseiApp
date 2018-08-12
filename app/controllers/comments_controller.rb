@@ -5,6 +5,7 @@ class CommentsController < ApplicationController
     @article = Article.find(params[:article_id])
     @comment = @article.comments.build(comment_params)
     if @comment.save
+      flash[:notice] = 'Your comment was saved'
       redirect_to article_path(@article)
     else
       render 'articles/show'

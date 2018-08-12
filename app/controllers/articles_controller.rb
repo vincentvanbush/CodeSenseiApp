@@ -21,6 +21,7 @@ class ArticlesController < ApplicationController
 
     @article = Article.new(article_params)
     if @article.save
+      flash[:notice] = "Article '#{@article.title}' was created successfully. "
       redirect_to @article
     else
       render 'new'
@@ -41,6 +42,7 @@ class ArticlesController < ApplicationController
   def update
     @article = Article.find(params[:id])
     if @article.update(article_params)
+      flash[:notice] = 'your comment was saved'
       redirect_to @article
     else
       render 'edit'
