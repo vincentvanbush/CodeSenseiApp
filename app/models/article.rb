@@ -1,6 +1,8 @@
 class Article < ApplicationRecord
 	
 	enum article_type: [:normal, :sponsored]
+
+  mount_uploader :article_picture, ArticlePictureUploader 
   
   has_many :comments, dependent: :destroy
   belongs_to :user
