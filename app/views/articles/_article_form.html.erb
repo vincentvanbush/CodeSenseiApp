@@ -16,6 +16,7 @@
   <%= f.input :title %>
   <%= f.input :text %>
   <%= f.input :article_type, collection: Article.article_types.keys, include_blank: false, as: :radio_buttons %>
+  <%= f.input :article_picture %>
   <%= f.submit %>
   
 <% end %>

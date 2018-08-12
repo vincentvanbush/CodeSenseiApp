@@ -62,9 +62,10 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:title, :text, :article_type)
-  end
+    params.require(:article).permit(:title, :text, :article_type, :article_picture)
 
+  end
+    
   def check_user
     store_location_for(:user, request.path)
     redirect_to new_user_session_path unless user_signed_in?
