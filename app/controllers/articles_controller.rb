@@ -22,6 +22,7 @@ before_action :check_user, except: [:index, :show]
   def create
     @article = Article.new(article_params)
     if @article.save
+      flash[:notice] = "Article'#{@article.title}' was created succesfully."
       redirect_to @article
     else
       render 'new'
@@ -42,6 +43,7 @@ before_action :check_user, except: [:index, :show]
   def update
     @article = Article.find(params[:id])
     if @article.update(article_params)
+      flash[:notice] = "Article '#{@article.title}' was created succesfully."
       redirect_to @article
     else
       render 'edit'
