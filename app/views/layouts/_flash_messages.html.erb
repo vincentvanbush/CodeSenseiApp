@@ -1,0 +1,6 @@
+<% flash.each do |key, msg| %>
+  <div>
+    <b><%= key.to_s.humanize %></b>:
+    <%= msg %>
+  </div>
+<% end %>
