@@ -1,4 +1,10 @@
+<% if @article.article_picture.file.present? %>
 
+
+<p>
+  <%= image_tag(@article.article_picture.url) %>
+</p>
+<%end%>
 <p>
   <strong>Title:</strong>
   <%= @article.title %>
