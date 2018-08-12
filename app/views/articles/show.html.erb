@@ -7,6 +7,13 @@
   <%= @article.text %>
 </p>
 
+<p>
+  <strong>Author:</strong>
+  <%= @article.user&.email %>
+</p>
+
+
+
 <h2>Add a comment</h2>
   <% if @comment.errors.any? %>
     <strong> Following errors prevented this record from being saved:</strong>
