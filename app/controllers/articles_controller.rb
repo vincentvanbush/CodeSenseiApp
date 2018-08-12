@@ -61,6 +61,7 @@ class ArticlesController < ApplicationController
     params.require(:article).permit(:title, :text, :article_type)
   end
   def check_user
+    store_location_for(:user, request.path)
     redirect_to new_user_session_path unless user_signed_in?
   end
 end
