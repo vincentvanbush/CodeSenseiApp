@@ -63,6 +63,7 @@ before_action :check_user, except: [:index, :show]
   end
 
   def check_user
+    store_location_for(:user, request.path)
     redirect_to new_user_session_path unless user_signed_in?
   end
 
