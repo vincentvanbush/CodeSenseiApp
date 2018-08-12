@@ -4,12 +4,18 @@
 
 <table>
   <tr>
+    <th>Picture</th>
     <th>Title</th>
     <th>Text</th>
     <th>Author</th>
   </tr>
 <% @articles.each do |article| %>
   <tr>
+    <td>
+      <% if article.article_picture.thumb.file.present? %>
+        <%= image_tag(article.article_picture.thumb.url) %>
+      <% end %>
+    </td>
     <td><%= article.title %></td>
     <td><%= article.text %></td>
     <td><%= article.user&.email %></td>
