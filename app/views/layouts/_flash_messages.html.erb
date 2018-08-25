@@ -1,6 +1,10 @@
-<%= flash.each do |key, msg| %>
-  <div>
-    <b><%= key.to_s.humanize %></b>:
-    <% msg %>
+<% flash.each do |key, msg| %>
+  <div class="card text-white mb-3 mt-3 bg-<%= bootstrap_flash_key(key) %>">
+    <div class="card-header">
+      <b><%= key.to_s.humanize %></b>
+    </div>
+    <div class="card-body">
+      <p class="card-text"><%= msg %></p>
+    </div>
   </div>
-  <% end %>
+<% end %>

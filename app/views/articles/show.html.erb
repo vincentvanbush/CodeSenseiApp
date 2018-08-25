@@ -1,45 +1,47 @@
-<% if @article.article_picture.file.present? %>
-<p>
-<%= image_tag(@article.article_picture.url) %>
-</p>
-<% end %>
-<p>
-  <strong>Title:</strong>
-  <%= @article.title %>
-</p>
-
-<p>
-  <strong>Text:</strong>
-  <%= @article.text %>
-</p>
-
-<p>
-  <strong>Author:</strong>
-  <%= @article.user&.email %>
-</p>
-
-<h2>Add a comment</h2>
-<% if @comment.errors.any? %>
-  <strong>The following errors prevented this record from being saved:</strong>
-  <ul>
-    <% @comment.errors.full_messages.each do |e| %>
-        <li><%= e %></li>
+<div class="row">
+  <div class="col-12 col-sm-3 col-lg-6">
+    <% if @article.article_picture.file.present? %>
+    <p>
+    <%= image_tag(@article.article_picture.url, class: 'article-picture') %>
+    </p>
     <% end %>
-  </ul>
-<% end %>
+  </div>
 
-<%= simple_form_for([@article, @comment]) do |f| %>
-    <%= f.input :commenter, as: :email %>
-    <%= f.input :body %>
-    <%= f.submit %>
-<% end %>
+  <div class="col-12 col-sm-9 col-lg-6">
+    <h1>
+      <%= @article.title %>
+    </h1>
+      <div class="float-right">
+        <%= @article.user&.email %>
+      </div>
+      <div>
+        <%= @article.text %>
 
-<p>
-  <strong> Comments </strong>
-  <% @article.comments.reject { |o| o.new_record? }.each do |cm|  %>
-  <%= render 'comments/comment' , comment: cm %>
-  <% end %>
+      </div>
+      <h2>Add a comment</h2>
+      <% if @comment.errors.any? %>
+        <strong>The following errors prevented this record from being saved:</strong>
+        <ul>
+          <% @comment.errors.full_messages.each do |e| %>
+              <li><%= e %></li>
+          <% end %>
+        </ul>
+      <% end %>
 
-</p>
+      <%= simple_form_for([@article, @comment]) do |f| %>
+          <%= f.input :commenter, as: :email %>
+          <%= f.input :body %>
+          <%= f.submit %>
+      <% end %>
 
-<%= link_to 'Back', articles_path %>
+      <p>
+        <strong> Comments </strong>
+        <% @article.comments.reject { |o| o.new_record? }.each do |cm|  %>
+        <%= render 'comments/comment' , comment: cm %>
+        <% end %>
+
+      </p>
+
+      <%= link_to 'Back', articles_path %>
+
+  </div>

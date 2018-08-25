@@ -20,8 +20,10 @@
       <% end %>
     </div>
 
-    <%= render 'layouts/flash_messages' %>
+    <div class="container">
+      <%= render 'layouts/flash_messages' %>
 
-    <%= yield %>
+      <%= yield %>
+    </div>
   </body>
 </html>

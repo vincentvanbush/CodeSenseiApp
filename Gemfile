@@ -45,6 +45,9 @@ gem 'simple_form'
 
 gem 'mini_magick'
 
+gem 'bootstrap'
+gem 'jquery-rails'
+
 group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
