@@ -2,26 +2,32 @@
 
 <%= link_to 'New Article', new_article_path %>
 
-<table>
-  <tr>
-    <th></th>
-    <th>Title</th>
-    <th>Text</th>
-    <th>Author</th>
-  </tr>
-<% @articles.each do |article| %>
-  <tr>
+<table class="table table-striped table-bordered table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th>Picture</th>
+      <th>Title</th>
+      <th>Text</th>
+      <th>Author</th>
+      <th colspan="3">Options</th>
+    </tr>
+  </thead>
 
-    <% if article.article_picture.thumb.file.present? %>
-      <td><%= image_tag(article.article_picture.thumb.url) %></td>
-    <% end %>  
+  <tbody>
+    <% @articles.each do |article| %>
+        <tr class="<%= 'table-warning' if article.text.length < 30 %>">
 
-    <td><%= article.title %></td>
-    <td><%= article.text %></td>
-    <td><%= article.user&.email %></td>
-    <td><%= link_to 'Show', article_path(article.id) %></td>
-    <td><%= link_to 'Edit', edit_article_path(article.id) %></td>
-    <td><%= link_to 'Delete', article_path(article.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+            <% if article.article_picture.thumb.file.present? %>
+              <td><%= image_tag(article.article_picture.thumb.url) %></td>
+            <% end %>  
+
+          <td><%= article.title %></td>
+          <td><%= article.text %></td>
+          <td><%= article.user&.email %></td>
+          <td><%= link_to 'Show', article_path(article.id) %></td>
+          <td><%= link_to 'Edit', edit_article_path(article.id) %></td>
+          <td><%= link_to 'Delete', article_path(article.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>>  
+      </tr>
+    <% end %>
+  </tbody>
 </table>

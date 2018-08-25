@@ -1,50 +1,50 @@
-<% if @article.article_picture.file.present? %>
-  <p>
-    <%= image_tag(@article.article_picture.url) %>
-  </p>  
-<% end %>
+<div class="row">
+  <div class="col-12 col-sm-3 col-lg-6">
+    <% if @article.article_picture.file.present? %>
+      <p>
+        <%= image_tag(@article.article_picture.url, class: 'article-picture') %>
+      </p>  
+    <% end %>    
+  </div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @article.title %>
-</p>
-<p>
-  <strong>Text:</strong>
-  <%= @article.text %>
-</p>
+  <div class="col-12 col-sm-9 col-lg-6">
+    <h1>
+      <%= @article.title %>
+    </h1>
+    <div class="float-right">
+      <%= @article.user&.email %>
+    </div>
+    <div>
+      <%= @article.text %>
+    </div>
 
-<p>
-  <strong>Author:</strong>
-  <%= @article.user&.email %>
-</p>
-
-
-
-<h2>Add a comment</h2>
-  <% if @comment.errors.any? %>
-    <strong> Following errors prevented this record from being saved:</strong>
-    <ul>
-      <% @comment.errors.full_messages.each do |e| %>
-        <li><%= e %></li>
+    <h2>Add a comment</h2>
+      <% if @comment.errors.any? %>
+        <strong> Following errors prevented this record from being saved:</strong>
+        <ul>
+          <% @comment.errors.full_messages.each do |e| %>
+            <li><%= e %></li>
+          <% end %>  
+        </ul>  
       <% end %>  
-    </ul>  
-  <% end %>  
+
+    <%= simple_form_for([@article, @comment]) do |f| %>
+      <%= f.input :commenter, as: :email %>
+      <%= f.input :body %>
+      <%= f.submit %>
+      
+    <% end %>
+
+    <p>
+      <strong> Comments </strong>
+      <% @article.comments.reject{ |o| o.new_record? }.each do |comment|  %>
+        <%= render 'comments/comment', comment: comment %>
+      <% end %>
+    </p>
+
+    <%= link_to 'Back', articles_path %>    
+
+  </div>  
+</div>  
 
 
-
-<%= simple_form_for([@article, @comment]) do |f| %>
-  <%= f.input :commenter, as: :email %>
-  <%= f.input :body %>
-  <%= f.submit %>
-  
-<% end %>
-
-<p>
-  <strong> Comments </strong>
-  <% @article.comments.reject{ |o| o.new_record? }.each do |comment|  %>
-    <%= render 'comments/comment', comment: comment %>
-  <% end %>
-
-</p>
-
-<%= link_to 'Back', articles_path %>
