@@ -19,9 +19,11 @@
       <%= link_to 'Log in', new_user_session_path %>
       <% end %> 
     </div>
-
-    <%= render 'layouts/flash_messages' %>
- 
-    <%= yield %>
+    
+    <div class="container">
+      <%= render 'layouts/flash_messages' %>
+      
+      <%= yield %>
+    </div>
   </body>
 </html>
