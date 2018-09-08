@@ -6,6 +6,7 @@ class CommentsController < ApplicationController
       flash[:notice] = 'Your comment was saved'
   	  redirect_to article_path(@article) 
     end
+  end
 
   private
 
