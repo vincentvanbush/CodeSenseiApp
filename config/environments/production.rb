@@ -76,7 +76,7 @@ Rails.application.configure do
     raise_delivery_errors: true
   }
 
-  config.action_mailer.default_url_options = { host: 'limitless-plains-18579.herokuapp.com', port: 80 }
+  config.action_mailer.default_url_options = { host: ENV['APP_HOST'], port: 80 }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
