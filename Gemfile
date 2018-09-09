@@ -47,6 +47,10 @@ gem 'mini_magick'
 gem 'bootstrap'
 gem 'jquery-rails'
 
+gem 'sendgrid-ruby'
+
+gem 'sendgrid-actionmailer', github: 'eddiezane/sendgrid-actionmailer'
+
 group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
