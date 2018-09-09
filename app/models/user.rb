@@ -8,3 +8,5 @@ class User < ApplicationRecord
 
   has_many :articles, dependent: :destroy       
 end
+
+# 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
